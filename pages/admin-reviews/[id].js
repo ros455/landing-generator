@@ -1,34 +1,16 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import TemplateDetailReview from '../../components/TemplateDetailReview';
-export const getStaticPaths = async () => {
-  const res = await fetch(`https://landing-generator.onrender.com/get-all-admin-comments`);
-  const data = await res.json();
 
-  const paths = data.map((review) => {
-    return {
-      params: { id: `${review?._id}` }
-    }
-  });
-
-  return {
-    paths,
-    fallback: true
-  }
-}
-
-export const getStaticProps = async (context) => {
-
-  const { id } = context.params;
-
-  const res = await fetch(`https://landing-generator.onrender.com/get-admin-comment/${id}`);
-  const data = await res.json();
-
-  return {
-    props: { review: data }
-  }
-}
-
-const AdminReview = ({ review }) => {
+const AdminReview = () => {
+  const [review, setReview] = useState([]);
+  useEffect(() => {
+    const defaultUrl = window.location.href; // замініть на фактичний URL
+    const id = defaultUrl.split('/').pop(); // отримати останній елемент URL (ID)
+    const url = `https://landing-generator.onrender.com/get-admin-comment/${id}`
+    fetch(url)
+    .then((res) => res.json())
+    .then((res) => setReview(res))
+  })
   return (
     <TemplateDetailReview 
     review={review}
