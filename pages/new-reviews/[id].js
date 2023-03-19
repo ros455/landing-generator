@@ -7,7 +7,7 @@ export const getStaticPaths = async () => {
 
   const paths = data.map((review) => {
     return {
-      params: { id: `${review._id}` }
+      params: { id: `${review?._id}` }
     }
   });
 
@@ -31,16 +31,6 @@ export const getStaticProps = async (context) => {
 
 
 const NewReview = ({ review }) => {
-
-  const [currentDomen, setCurrentDomen] = useState();
-
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    const domain = `${url.protocol}//${url.hostname}`;
-    setCurrentDomen(domain);
-  })
-
-  console.log('currentDomen',currentDomen);
   return (
     <TemplateDetailReview 
     review={review}

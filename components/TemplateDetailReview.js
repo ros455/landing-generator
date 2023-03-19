@@ -19,7 +19,6 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
     const handleDelete = () => {
       const defaultUrl = window.location.href; // замініть на фактичний URL
       const id = defaultUrl.split('/').pop(); // отримати останній елемент URL (ID)
-      console.log('id',id);
   
       const url = `${deleteUrl}${id}`;
       const options = {
@@ -33,11 +32,11 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
     }
     const handleEdit = () => {
       setIsOpen(true);
-      setImageUrl(review.imageUrl);
-      setName(review.name);
-      setRating(review.rating);
-      setDescription(review.description);
-      setDate(review.date);
+      setImageUrl(review?.imageUrl);
+      setName(review?.name);
+      setRating(review?.rating);
+      setDescription(review?.description);
+      setDate(review?.date);
     }
     const onClickRemoveImage = async (event) => {
       setImageFile('');
@@ -102,10 +101,10 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
       event.preventDefault();
       try {
           const formData = new FormData();
-          formData.append('imageUrl', review.imageUrl );
-          formData.append('name', review.name);
-          formData.append('rating', review.rating);
-          formData.append('description', review.description);
+          formData.append('imageUrl', review?.imageUrl );
+          formData.append('name', review?.name);
+          formData.append('rating', review?.rating);
+          formData.append('description', review?.description);
           formData.append('date', date);
           const response = await fetch('https://landing-generator.onrender.com/create-comment', {
               method: 'POST',
@@ -121,16 +120,14 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
   const handleFileChange = async (event) => {
     setImageFile(event.target.files[0]);
   };
-  
-  console.log('review',review);
 
     return (
         <div className={style.main_review_block}>
         <div className={style.review_block}>
           <div className={style.image_wrap}>
             <Image
-              src={`${review.imageUrl ? review.imageUrl : '/image/not-img.jpg'}`}
-              alt={`${review.imageUrl ? review.imageUrl : review.imageUrl}`}
+              src={`${review?.imageUrl ? review?.imageUrl : '/image/not-img.jpg'}`}
+              alt={`${review?.imageUrl ? review?.imageUrl : ''}`}
               width='100'
               height='100'
               layout="responsive"
@@ -139,20 +136,20 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
             /> 
           </div>
           <div className={style.review_text_block}>
-            <h3>{review.name}</h3>
-            <p>{review.date}</p>
-            <h3>Рейтинг: {review.rating}</h3>
-            <h3 className={style.review_desc}>Опис: {review.description}</h3>
+            <h3>{review?.name}</h3>
+            <p>{review?.date}</p>
+            <h3>Рейтинг: {review?.rating}</h3>
+            <h3 className={style.review_desc}>Опис: {review?.description}</h3>
           </div>
         </div>
         <div>
           {isOpen && (
             <div className={style.image_wrap}>
-              {review.imageUrl 
+              {review?.imageUrl 
               ?
               <Image
-              src={`${review.imageUrl}`}
-              alt={`${review.imageUrl}`}
+              src={`${review?.imageUrl}`}
+              alt={`${review?.imageUrl}`}
               width='100'
               height='100'
               layout="responsive"

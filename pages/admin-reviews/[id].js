@@ -6,7 +6,7 @@ export const getStaticPaths = async () => {
 
   const paths = data.map((review) => {
     return {
-      params: { id: `${review._id}` }
+      params: { id: `${review?._id}` }
     }
   });
 
