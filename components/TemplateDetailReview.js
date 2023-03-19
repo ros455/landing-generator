@@ -91,7 +91,9 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
           const data = await response.json();
   
         }
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        },1000)
       } catch (error) {
         console.error(error);
       }
