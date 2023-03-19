@@ -1,0 +1,33 @@
+@import '../styles/global-template.scss';
+
+
+
+.order_block {
+    display: flex;
+    box-shadow: 0px 1px 0px 0px black;
+    justify-content: space-around;
+    &:hover {
+        background-color: #e7e7e7;
+    }
+    p{
+        width: 33.3%;
+        text-align: center;
+        margin: 15px 0px;
+    }
+}
+
+.order_title {
+    font-weight: 600;
+}
+
+.handle_delete_button {
+    @extend %big_button_danger_color_server;
+}
+
+.ordr_item_wrap {
+    margin-left: 20px;
+}
+
+.loader_wrap {
+    @extend %loader_wrap;
+}

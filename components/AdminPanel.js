@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../styles/AdminPanel.module.scss';
 import AdminReviews from './AdminReviews';
 import NewReviews from './NewReviews';
+import Orders from './Orders';
 import Products from './Products';
 import Timer from './Timer';
 const AdminPanel = () => {
@@ -14,6 +15,7 @@ const AdminPanel = () => {
             <NewReviews/>
             <AdminReviews/>
             <Products/>
+            <Orders/>
         </div>
     );
 };

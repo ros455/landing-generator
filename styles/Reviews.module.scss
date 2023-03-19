@@ -1,3 +1,5 @@
+@import '../styles/global-template.scss';
+
 .display_reviews {
     display: flex;
     box-shadow: 0px 1px 0px 0px black;
@@ -12,14 +14,24 @@
     }
 }
 
+.review_title {
+    font-weight: 600;
+}
+
 .main_review_block {
     margin-top: 20px;
+}
+
+.review_text_block {
+    width: 80%;
 }
 
 .review_block {
     display: flex;
     border: 1px solid black;
     align-items: center;
+    width: 100%;
+    margin: 5px 0px;
 }
 
 .image_wrap {
@@ -34,31 +46,59 @@
 .button_block {
     margin-top: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .review_desc {
-    border: 1px solid black;
-    width: 100%;
-}
-
-.add_review_button {
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-weight: 600;
-    border-radius: 15px;
-    background-color: #3378FE;
-    padding: 8px 35px;
-    transition: all;
-    color: white;
-    &:hover{
-        transition: 1s;
-        background-color: rgba(0, 0, 0, 0);
-        color: #3378FE;
-        cursor: pointer;
-    }
+    width: 90%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .add_review_button_wrapper {
     text-align: center;
-    margin-bottom: 15px;
+    margin: 15px 0px;
+    button {
+        @extend %big_button_primary_color_server;
+    }
+}
+
+.handle_edit_button {
+    @extend %big_button_primary_color_server;
+}
+
+.handle_delete_button {
+    @extend %big_button_danger_color_server;
+}
+
+.handle_publish_button {
+    @extend %big_button_sucsesed_color_server;
+}
+
+.remove_imege_button_wrap {
+    margin: 10px 0px;
+}
+
+.edit_button_wrap {
+    margin-top: 10px;
+    display: flex;
+}
+
+
+.edit_input_wrap {
+    textarea{
+        resize: none;
+        width: 250px;
+        height: 50px;
+    }
+
+    p{
+        font-weight: 600;
+    }
+}
+
+.loader_wrap {
+    @extend %loader_wrap;
 }

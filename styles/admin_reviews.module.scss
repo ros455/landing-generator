@@ -1,0 +1,50 @@
+@import '../styles/global-template.scss';
+
+.add_reviews_wrapper {
+text-align: center;
+}
+
+.add_reviews_block {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+div{
+    padding-bottom: 15px;
+    p {
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
+
+}
+
+.add_reviews_input {
+    width: 200px;
+    height: 21px;
+}
+
+.add_reviews_textarea {
+    resize: none;
+    width: 280px;
+    height: 70px;
+}
+
+.add_reviews_submit_button_wrap {
+    text-align: center;
+    margin-top: 30px;
+    button {
+        @extend %big_button_primary_color_server;
+    }
+}
+
+.add_reviews_photo_button {
+    .upload_photo {
+        @extend %big_button_danger_color_server;
+    }
+}
+
+.handle_delete_button {
+    @extend %big_button_sucsesed_color_server;
+}

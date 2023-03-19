@@ -1,3 +1,5 @@
+@import '../styles/global-template.scss';
+
 .item {
     display: flex;
     justify-content: center;
@@ -10,19 +12,7 @@
 }
 
 .product_button {
-    border: 0;
-    background: #3378FE;
-    border-radius: 15px;
-    color: white;
-    padding: 5px 15px;
-    cursor: pointer;
-    transition: all;
-    font-weight: 600;
-    &:hover{
-        transition: 1s;
-        background-color: rgba(0, 0, 0, 0);
-        color: #3378FE;
-    }
+    @extend %smal_button_primary_color_server;
 }
 
 .table {
@@ -55,17 +45,9 @@
 }
 
 .product_close_button {
-    border: 0;
-    background: #cf1d1d;
-    border-radius: 15px;
-    color: white;
-    padding: 5px 15px;
-    cursor: pointer;
-    transition: all;
-    font-weight: 600;
-    &:hover{
-        transition: 1s;
-        background-color: rgba(0, 0, 0, 0);
-        color: #cf1d1d;
-    }
+    @extend %smal_button_danger_color_server;
+}
+
+.loader_wrap {
+    @extend %loader_wrap;
 }

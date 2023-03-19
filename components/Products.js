@@ -11,7 +11,7 @@ const Products = () => {
     const [availability, setAvilability] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:4444/get-all-products')
+        fetch('https://landing-generator.onrender.com/get-all-products')
             .then((res) => res.json())
             .then((res) => setProducts(res))
     }, [])
@@ -29,7 +29,7 @@ const Products = () => {
     }
 
     const onSubmit = () => {
-        const url = `http://localhost:4444/update-product/${currentId}`;
+        const url = `https://landing-generator.onrender.com/update-product/${currentId}`;
         const options = {
             method: 'PATCH',
             headers: {
@@ -44,7 +44,9 @@ const Products = () => {
         };
         fetch(url, options)
         setIsOpen(false);
-        window.location.reload();
+        setTimeout(() => {
+            window.location.reload();
+        },1000)
     }
 
     return (
@@ -57,6 +59,7 @@ const Products = () => {
                 <input type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
                 <input type='text' value={color} onChange={(e) => setColor(e.target.value)}/>
                 <input type='text' value={price} onChange={(e) => setPrice(e.target.value)}/>
+                {/* <input type='text' value={availability} onChange={(e) => setAvilability(e.target.value)}/> */}
                     <select value={availability} onChange={(e) => setAvilability(e.target.value)}>
                         <option value="В наявності">В наявності</option>
                         <option value="Не має в наявності">Не має в наявності</option>
@@ -66,30 +69,36 @@ const Products = () => {
                 <button className={style.product_button} onClick={onSubmit}>Зберегти</button>
                 </div>
             </div>}
+            {products.length != 0 
+            ? 
             <div>
-                <table className={style.table}>
-                    <thead>
-                        <tr className={style.tr}>
-                            <th>Назва товару</th>
-                            <th>Колір</th>
-                            <th>Ціна</th>
-                            <th>Наявність</th>
-                            <th></th>
+            <table className={style.table}>
+                <thead>
+                    <tr className={style.tr}>
+                        <th>Назва товару</th>
+                        <th>Колір</th>
+                        <th>Ціна</th>
+                        <th>Наявність</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products && products.map((el) => (
+                        <tr className={style.tr} key={el._id}>
+                            <td>{el.title}</td>
+                            <td>{el.color}</td>
+                            <td>{el.price}</td>
+                            <td>{el.availability}</td>
+                            <td><button className={style.product_button} onClick={() => editFunc(el._id)}>Редагувати</button></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {products && products.map((el) => (
-                            <tr className={style.tr} key={el._id}>
-                                <td>{el.title}</td>
-                                <td>{el.color}</td>
-                                <td>{el.price}</td>
-                                <td>{el.availability}</td>
-                                <td><button className={style.product_button} onClick={() => editFunc(el._id)}>Редагувати</button></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+            : 
+            <div className={style.loader_wrap}>
+            <span className={style.loader}></span>
+        </div>} 
         </div>
     );
 };

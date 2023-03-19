@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import style from '../../styles/AddReviews.module.scss';
+import style from '../../styles/admin_reviews.module.scss';
+import Image from 'next/legacy/image';
 const AddReview = () => {
     const router = useRouter();
-    const inputFileRef = React.useRef(null);
+    const inputFileRef = useRef(null);
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
     const [name, setName] = useState('');
     const [rating, setRating] = useState(null);
     const [description, setDescription] = useState(null);
@@ -15,12 +17,12 @@ const AddReview = () => {
         event.preventDefault();
         try {
             const formData = new FormData();
-            formData.append('imageUrl', selectedFile );
+            formData.append('imageUrl', selectedFile);
             formData.append('name', name);
             formData.append('rating', rating);
             formData.append('description', description);
             formData.append('date', date);
-            const response = await fetch('http://localhost:4444/create-comment', {
+            const response = await fetch('https://landing-generator.onrender.com/create-comment', {
                 method: 'POST',
                 body: formData
             });
@@ -30,29 +32,74 @@ const AddReview = () => {
             console.error(error);
         }
     };
+    
+    const changeFunc = (e) => {
+        setSelectedFile(e.target.files[0]);
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+            const fileUrl = event.target.result;
+            setImageUrl(fileUrl);
+        };
+
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+    const deletePhotoFunc = () => {
+        setImageUrl(null);
+        setSelectedFile('');
+    }
 
     return (
         <div className={style.add_reviews_wrapper}>
             <div className={style.add_reviews_block}>
-                <p>Виберіть фото</p>
-                <input type='file'
-                    hidden
-                    ref={inputFileRef}
-                    onChange={(e) => setSelectedFile(e.target.files[0])} />
-                <button className={style.add_reviews_photo_button}
-                onClick={() => inputFileRef.current.click()}>Завантажити фото</button>
-                <p>Вкажіть імя</p>
-                <input className={style.add_reviews_input} type='text' onChange={(e) => setName(e.target.value)} />
-                <p>Ваш коментар</p>
-                <textarea className={style.add_reviews_textarea} onChange={(e) => setDescription(e.target.value)} />
-                <p>Поставте оцінку (не быліше 5)</p>
-                <input className={style.add_reviews_input} type='number'
-                    onChange={(e) => setRating(e.target.value > 5 || e.target.value < 1  ? 5 : e.target.value )} />
-                <p>Вкажіть дату:</p>
-                <input type='date' onChange={(e) => setDate(e.target.value)} />
-               <div className={style.add_reviews_submit_button_wrap}>
-               <button className={style.add_reviews_submit_button} onClick={handleSubmit}>Створити відгук</button>
-               </div>
+                <div>
+                    <p>Виберіть фото</p>
+                        {imageUrl &&
+                            <div className={style.add_reviews_image_wrap}>
+                                <div>
+                                    <button onClick={deletePhotoFunc} className={style.handle_delete_button}>Видалити фото</button>
+                                </div>
+                                <Image
+                                    src={`${imageUrl}`}
+                                    alt={`${''}`}
+                                    width='100'
+                                    height='100'
+                                    layout="responsive"
+                                    objectFit="cover"
+                                    className={style.image_item}
+                                />
+                            </div>}
+                    <input type='file'
+                        hidden
+                        ref={inputFileRef}
+                        onChange={changeFunc}
+                    />
+                    <div className={style.add_reviews_photo_button}>
+                    <button className={style.upload_photo}
+                        onClick={() => inputFileRef.current.click()}>Завантажити фото</button>
+                    </div>
+                </div>
+                <div>
+                    <p>Вкажіть імя</p>
+                    <input className={style.add_reviews_input} type='text' onChange={(e) => setName(e.target.value)} />
+                </div>
+                <div>
+                    <p>Ваш коментар</p>
+                    <textarea className={style.add_reviews_textarea} onChange={(e) => setDescription(e.target.value)} />
+                </div>
+                <div>
+                    <p>Поставте оцінку (не быліше 5)</p>
+                    <input className={style.add_reviews_input} type='number'
+                        onChange={(e) => setRating(e.target.value > 5 || e.target.value < 1 ? 5 : e.target.value)} />
+                </div>
+                <div>
+                    <p>Вкажіть дату:</p>
+                    <input type='date' onChange={(e) => setDate(e.target.value)} />
+                </div>
+            </div>
+            <div className={style.add_reviews_submit_button_wrap}>
+                <button className={style.add_reviews_submit_button} onClick={handleSubmit}>Створити відгук</button>
             </div>
         </div>
     );

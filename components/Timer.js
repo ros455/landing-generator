@@ -8,7 +8,7 @@ function Timer() {
   const [dateInput, setDateInput] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:4444/get-timer')
+    fetch('https://landing-generator.onrender.com/get-timer')
       .then((res) => res.json())
       .then((res) => {
         setFullDate(res)
@@ -34,7 +34,7 @@ function Timer() {
   }, [fullDate.timer]);
 
   const handleUpdateTimer = () => {
-    fetch('http://localhost:4444/update-timer', {
+    fetch('https://landing-generator.onrender.com/update-timer', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ function Timer() {
       <div className={style.choise_time}>
         <p>Вибрати дату</p>
         <input type="date" id="date" onChange={(e) => setDateInput(e.target.value)} value={dateInput}/>
-        <button onClick={handleUpdateTimer}>Підтвердити зміни</button>
+        <button onClick={handleUpdateTimer} className={style.handle_edit_button }>Підтвердити зміни</button>
       </div>
     </div>
   );

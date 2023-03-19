@@ -1,3 +1,5 @@
+@import '../styles/global-template.scss';
+
 .display_time {
     display: flex;
     *{
@@ -7,7 +9,12 @@
 
 .choise_time {
     display: flex;
+    align-items: center;
     *{
         margin: 0px 10px;
     }
+}
+
+.handle_edit_button {
+    @extend %big_button_primary_color_server;
 }
