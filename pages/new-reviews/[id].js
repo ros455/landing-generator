@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import TemplateDetailReview from '../../components/TemplateDetailReview';
 
 export const getStaticPaths = async () => {
@@ -29,7 +29,18 @@ export const getStaticProps = async (context) => {
   }
 }
 
+
 const NewReview = ({ review }) => {
+
+  const [currentDomen, setCurrentDomen] = useState();
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const domain = `${url.protocol}//${url.hostname}`;
+    setCurrentDomen(domain);
+  })
+
+  console.log('currentDomen',currentDomen);
   return (
     <TemplateDetailReview 
     review={review}

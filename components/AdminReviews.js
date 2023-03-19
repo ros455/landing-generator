@@ -12,8 +12,9 @@ const AdminReviews = () => {
     }, [])
 
     const redirectFunc = () => {
-        router.push('http://localhost:3000/admin-reviews');
+        router.push('/admin-reviews');
     }
+
     return (
         <div>
             <div>
@@ -22,7 +23,7 @@ const AdminReviews = () => {
             {reviews.length != 0 ?
                 <>
                     <div className={style.add_review_button_wrapper}>
-                        <button className={style.add_review_button} onClick={redirectFunc}>Додати відгук </button>
+                        <button className={style.add_review_button} onClick={redirectFunc}>Додати відгук</button>
                     </div>
                     <TemalateReviews reviews={reviews} url='http://localhost:3000/admin-reviews/' />
                 </>

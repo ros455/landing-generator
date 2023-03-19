@@ -112,7 +112,7 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
               body: formData
           });
   
-          router.push('http://localhost:3000');
+          router.push('/');
       } catch (error) {
           console.error(error);
       }

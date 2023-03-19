@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Link from 'next/link';
 import style from '../styles/Reviews.module.scss';
 const TemalateReviews = ({ reviews, url }) => {
