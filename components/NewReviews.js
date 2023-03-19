@@ -16,7 +16,7 @@ const NewReviews = () => {
                 <h2>Нові відгуки</h2>
             </div>
             {reviews.length != 0 ?
-                <TemalateReviews reviews={reviews} url='http://localhost:3000/new-reviews/'/>
+                <TemalateReviews reviews={reviews} url='new-reviews/'/>
             :
             <div className={style.loader_wrap}>
                 <span className={style.loader}></span>

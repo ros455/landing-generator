@@ -23,7 +23,7 @@ const Orders = () => {
                             <p className={style.order_title}>Ціна</p>
                         </div>
                         {orders.map((el) => (
-                            <Link href={`http://localhost:3000/order/${el._id}`} key={el._id} className={style.order_block}>
+                            <Link href={`order/${el._id}`} key={el._id} className={style.order_block}>
                                 <p>{el.title}</p>
                                 <p>{el.color}</p>
                                 <p>{el.price}</p>

@@ -25,7 +25,7 @@ const AdminReviews = () => {
                     <div className={style.add_review_button_wrapper}>
                         <button className={style.add_review_button} onClick={redirectFunc}>Додати відгук</button>
                     </div>
-                    <TemalateReviews reviews={reviews} url='http://localhost:3000/admin-reviews/' />
+                    <TemalateReviews reviews={reviews} url='/admin-reviews/' />
                 </>
             :
             <div className={style.loader_wrap}>
