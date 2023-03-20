@@ -10,7 +10,7 @@ const Login = () => {
     const handleSubmit = () => {
         if(login == 'admin' && password == 'admin') {
             localStorage.setItem('isAdmin',true)
-            router.push('admin')
+            router.push('edit/admin')
         } else {
 
             localStorage.setItem('isAdmin',false)
