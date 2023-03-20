@@ -43,7 +43,9 @@ const Order = ({order}) => {
           },
         };
         fetch(url, options)
-        router.push('/');
+        setTimeout(() => {
+          router.push('/');
+        },500) 
       }
       
     return (

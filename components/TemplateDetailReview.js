@@ -28,7 +28,9 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
         },
       };
       fetch(url, options)
-      router.push('/');
+      setTimeout(() => {
+        router.push('/');
+      },500)  
     }
     const handleEdit = () => {
       setIsOpen(true);
@@ -98,6 +100,8 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
         console.error(error);
       }
     }
+
+    console.log('review',review);
   
     const publish = async (event) => {
       event.preventDefault();
@@ -113,7 +117,9 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
               body: formData
           });
   
-          router.push('/');
+          setTimeout(() => {
+            router.push('/');
+          },500) 
       } catch (error) {
           console.error(error);
       }
@@ -123,13 +129,17 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
     setImageFile(event.target.files[0]);
   };
 
+  console.log('review?.imageUrl',typeof(review?.imageUrl));
+
     return (
         <div className={style.main_review_block}>
         <div className={style.review_block}>
           <div className={style.image_wrap}>
             <Image
-              src={`${review?.imageUrl ? review?.imageUrl : '/image/not-img.jpg'}`}
-              alt={`${review?.imageUrl ? review?.imageUrl : ''}`}
+              src={`${review?.imageUrl != undefined && review?.imageUrl != 'null' && review?.imageUrl != '' ? review?.imageUrl : '/image/not-img.jpg'}`}
+              // src={`${review?.imageUrl ? review?.imageUrl : '/image/not-img.jpg'}`}
+              // src={`${'/image/not-img.jpg'}`}
+              alt={`${review?.imageUrl != undefined && review?.imageUrl != 'null' ? review?.imageUrl : '/image/not-img.jpg'}`}
               width='100'
               height='100'
               layout="responsive"
@@ -150,7 +160,7 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
               {review?.imageUrl 
               ?
               <Image
-              src={`${review?.imageUrl}`}
+              src={`${review?.imageUrl != undefined && review?.imageUrl != 'null' && review?.imageUrl != '' ? review?.imageUrl : '/image/not-img.jpg'}`}
               alt={`${review?.imageUrl}`}
               width='100'
               height='100'

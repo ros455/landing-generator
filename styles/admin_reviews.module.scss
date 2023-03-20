@@ -41,10 +41,10 @@ div{
 
 .add_reviews_photo_button {
     .upload_photo {
-        @extend %big_button_danger_color_server;
+        @extend %big_button_sucsesed_color_server;
     }
 }
 
 .handle_delete_button {
-    @extend %big_button_sucsesed_color_server;
+    @extend %big_button_danger_color_server;
 }

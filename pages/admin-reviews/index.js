@@ -7,7 +7,7 @@ const AddReview = () => {
     const inputFileRef = useRef(null);
 
     const [selectedFile, setSelectedFile] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
+    const [imageUrl, setImageUrl] = useState('');
     const [name, setName] = useState('');
     const [rating, setRating] = useState(null);
     const [description, setDescription] = useState(null);
@@ -27,7 +27,9 @@ const AddReview = () => {
                 body: formData
             });
 
-            router.push('/');
+            setTimeout(() => {
+                router.push('/');
+              },500) 
         } catch (error) {
             console.error(error);
         }

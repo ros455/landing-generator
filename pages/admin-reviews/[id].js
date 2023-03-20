@@ -10,7 +10,7 @@ const AdminReview = () => {
     fetch(url)
     .then((res) => res.json())
     .then((res) => setReview(res))
-  })
+  },[])
   return (
     <TemplateDetailReview 
     review={review}
