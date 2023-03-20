@@ -24,16 +24,9 @@ const Orders = () => {
                 {sortOrders.length != 0
                     ?
                     <>
-                        <div className={style.order_block}>
-                            <p className={style.order_title}>Назва товару</p>
-                            <p className={style.order_title}>Колір</p>
-                            <p className={style.order_title}>Ціна</p>
-                        </div>
                         {sortOrders.map((el) => (
                             <Link href={`order/${el._id}`} key={el._id} className={style.order_block}>
-                                <p>{el.title}</p>
-                                <p>{el.color}</p>
-                                <p>{el.price}</p>
+                                <p>Дата: {new Date(el.createdAt).toISOString().slice(0, 10)} Замовлення: {el.selectedorder}</p>
                             </Link>
                         ))}
                     </>

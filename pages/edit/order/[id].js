@@ -60,9 +60,7 @@ const Order = ({order}) => {
                     <p>Комментар замовника: {order.comment}</p>
                     <div>
                         <h3>Замовлений товар:</h3>
-                        <p>Назва товару: {order.title}</p>
-                        <p>Ціна товару: {order.price}</p>
-                        <p>Колір товару: {order.color}</p>
+                        <p>Про товар: {order.selectedorder}</p>
                     </div>
                 </div>}
             </div>
