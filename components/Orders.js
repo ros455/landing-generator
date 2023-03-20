@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import style from '../styles/Order.module.scss';
 import Link from 'next/link';
+import Loader from '../components/Loader.js';
 const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [sortOrders, setSortOrders] = useState([]);
 
     useEffect(() => {
-        fetch('https://landing-generator.onrender.com/get-all-order')
+        fetch('https://lending-generator-server.herokuapp.com/get-all-order')
             .then((res) => res.json())
             .then((res) => setOrders(res))
     }, [])
@@ -37,9 +38,7 @@ const Orders = () => {
                         ))}
                     </>
                     :
-                    <div className={style.loader_wrap}>
-                        <span className={style.loader}></span>
-                    </div>
+                    <Loader/>
                 }
             </div>
         </div>

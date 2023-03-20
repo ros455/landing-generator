@@ -1,11 +1,11 @@
 import React,{useEffect,useState} from 'react';
 import TemalateReviews from './TemalateReviews';
-import style from '../styles/Reviews.module.scss';
+import Loader from '../components/Loader.js';
 const NewReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('https://landing-generator.onrender.com/get-all-comments')
+        fetch('https://lending-generator-server.herokuapp.com/get-all-comments')
         .then((res) => res.json())
         .then((res) => setReviews(res))
     },[])
@@ -18,9 +18,8 @@ const NewReviews = () => {
             {reviews.length != 0 ?
                 <TemalateReviews reviews={reviews} url='new-reviews/'/>
             :
-            <div className={style.loader_wrap}>
-                <span className={style.loader}></span>
-            </div>}
+            <Loader/>
+            }
         </div>
     );
 };

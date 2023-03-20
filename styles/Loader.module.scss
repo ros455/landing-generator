@@ -1,0 +1,5 @@
+@import '../styles/global-template.scss';
+
+.loader_wrap {
+    @extend %loader_wrap;
+}

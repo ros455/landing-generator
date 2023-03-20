@@ -1,8 +1,8 @@
 import React from 'react';
-import style from '../../styles/Order.module.scss';
+import style from '../../../styles/Order.module.scss';
 import { useRouter } from 'next/router';
 export const getStaticPaths = async () => {
-    const res = await fetch(`https://landing-generator.onrender.com/get-all-order`);
+    const res = await fetch(`https://lending-generator-server.herokuapp.com/get-all-order`);
     const data = await res.json();
   
     const paths = data.map((order) => {
@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
   
     const { id } = context.params;
   
-    const res = await fetch(`https://landing-generator.onrender.com/get-one-order/${id}`);
+    const res = await fetch(`https://lending-generator-server.herokuapp.com/get-one-order/${id}`);
     const data = await res.json();
   
     return {
@@ -35,7 +35,7 @@ const Order = ({order}) => {
         const defaultUrl = window.location.href; // замініть на фактичний URL
         const id = defaultUrl.split('/').pop(); // отримати останній елемент URL (ID)
     
-        const url = `https://landing-generator.onrender.com/remove-order/${id}`;
+        const url = `https://lending-generator-server.herokuapp.com/remove-order/${id}`;
         const options = {
           method: 'DELETE',
           headers: {
@@ -44,7 +44,7 @@ const Order = ({order}) => {
         };
         fetch(url, options)
         setTimeout(() => {
-          router.push('/');
+          router.push('/edit/admin');
         },500) 
       }
       

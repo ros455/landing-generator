@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import style from '../../styles/admin_reviews.module.scss';
+import style from '../../../styles/admin_reviews.module.scss';
 import Image from 'next/legacy/image';
 const AddReview = () => {
     const router = useRouter();
@@ -22,13 +22,13 @@ const AddReview = () => {
             formData.append('rating', rating);
             formData.append('description', description);
             formData.append('date', date);
-            const response = await fetch('https://landing-generator.onrender.com/create-comment', {
+            const response = await fetch('https://lending-generator-server.herokuapp.com/create-comment', {
                 method: 'POST',
                 body: formData
             });
 
             setTimeout(() => {
-                router.push('/');
+                router.push('/admin/edit');
               },500) 
         } catch (error) {
             console.error(error);

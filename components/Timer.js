@@ -8,7 +8,7 @@ function Timer() {
   const [dateInput, setDateInput] = useState('');
 
   useEffect(() => {
-    fetch('https://landing-generator.onrender.com/get-timer')
+    fetch('https://lending-generator-server.herokuapp.com/get-timer')
       .then((res) => res.json())
       .then((res) => {
         setFullDate(res)
@@ -34,7 +34,7 @@ function Timer() {
   }, [fullDate.timer]);
 
   const handleUpdateTimer = () => {
-    fetch('https://landing-generator.onrender.com/update-timer', {
+    fetch('https://lending-generator-server.herokuapp.com/update-timer', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

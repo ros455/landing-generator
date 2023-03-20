@@ -29,7 +29,7 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
       };
       fetch(url, options)
       setTimeout(() => {
-        router.push('/');
+        router.push('/edit/admin');
       },500)  
     }
     const handleEdit = () => {
@@ -112,14 +112,16 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
           formData.append('rating', review?.rating);
           formData.append('description', review?.description);
           formData.append('date', date);
-          const response = await fetch('https://landing-generator.onrender.com/create-comment', {
+          const response = await fetch('https://lending-generator-server.herokuapp.com/create-comment', {
               method: 'POST',
               body: formData
           });
+
+          handleDelete()
   
           setTimeout(() => {
-            router.push('/');
-          },500) 
+            router.push('/edit/admin');
+          },1000) 
       } catch (error) {
           console.error(error);
       }

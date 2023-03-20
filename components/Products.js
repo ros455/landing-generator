@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from '../styles/Products.module.scss';
+import Loader from '../components/Loader.js';
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ const Products = () => {
     const [availability, setAvilability] = useState('');
 
     useEffect(() => {
-        fetch('https://landing-generator.onrender.com/get-all-products')
+        fetch('https://lending-generator-server.herokuapp.com/get-all-products')
             .then((res) => res.json())
             .then((res) => setProducts(res))
     }, [])
@@ -29,7 +30,7 @@ const Products = () => {
     }
 
     const onSubmit = () => {
-        const url = `https://landing-generator.onrender.com/update-product/${currentId}`;
+        const url = `https://lending-generator-server.herokuapp.com/update-product/${currentId}`;
         const options = {
             method: 'PATCH',
             headers: {
@@ -96,9 +97,8 @@ const Products = () => {
             </table>
         </div>
             : 
-            <div className={style.loader_wrap}>
-            <span className={style.loader}></span>
-        </div>} 
+            <Loader/>
+        } 
         </div>
     );
 };

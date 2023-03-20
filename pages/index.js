@@ -6,7 +6,7 @@ import AdminPanel from '../components/AdminPanel';
 export default function Home() {
   return (
     <div className={styles.container}>
-      <AdminPanel/>
+      <h1>Start Page</h1>
     </div>
   )
 }

@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 import style from '../styles/Reviews.module.scss'
 import { useRouter } from 'next/router';
 import TemalateReviews from './TemalateReviews';
+import Loader from '../components/Loader.js';
 const AdminReviews = () => {
     const [reviews, setReviews] = useState([]);
     const router = useRouter();
     useEffect(() => {
-        fetch('https://landing-generator.onrender.com/get-all-admin-comments')
+        fetch('https://lending-generator-server.herokuapp.com/get-all-admin-comments')
             .then((res) => res.json())
             .then((res) => setReviews(res))
     }, [])
 
     const redirectFunc = () => {
-        router.push('/admin-reviews');
+        router.push('admin-reviews');
     }
+
+    console.log('reviews',reviews);
 
     return (
         <div>
@@ -25,12 +28,11 @@ const AdminReviews = () => {
                     <div className={style.add_review_button_wrapper}>
                         <button className={style.add_review_button} onClick={redirectFunc}>Додати відгук</button>
                     </div>
-                    <TemalateReviews reviews={reviews} url='/admin-reviews/' />
+                    <TemalateReviews reviews={reviews} url='admin-reviews/' />
                 </>
             :
-            <div className={style.loader_wrap}>
-                <span className={style.loader}></span>
-            </div>}
+            <Loader/>
+            }
         </div>
     );
 };
