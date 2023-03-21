@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import style from '../styles/admin/Reviews.module.scss';
+import style from '../../styles/admin/Reviews.module.scss';
 import { useRouter } from 'next/router';
 import TemalateReviews from './TemalateReviews';
-import Loader from '../components/Loader.js';
+import Loader from './Loader.js';
 const AdminReviews = () => {
     const [reviews, setReviews] = useState([]);
     const router = useRouter();

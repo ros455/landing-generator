@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import style from '../styles/admin/Order.module.scss';
+import style from '../../styles/admin/Order.module.scss';
 import Link from 'next/link';
-import Loader from '../components/Loader.js';
+import Loader from './Loader.js';
 const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [sortOrders, setSortOrders] = useState([]);

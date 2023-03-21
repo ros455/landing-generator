@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import TemplateDetailReview from '../../../components/TemplateDetailReview';
+import TemplateDetailReview from '../../../components/admin/TemplateDetailReview';
 
 const NewReview = () => {
   const [review, setReview] = useState([]);

@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import TemalateReviews from './TemalateReviews';
-import Loader from '../components/Loader.js';
+import Loader from './Loader.js';
 const NewReviews = () => {
     const [reviews, setReviews] = useState([]);
 

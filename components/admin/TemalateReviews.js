@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import style from '../styles/admin/Reviews.module.scss';
+import style from '../../styles/admin/Reviews.module.scss';
 import {BsArrowDownCircle} from 'react-icons/bs';
 
 const PAGE_SIZE = 5;

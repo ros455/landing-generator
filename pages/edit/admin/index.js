@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import AdminPanel from '../../../components/AdminPanel';
+import AdminPanel from '../../../components/admin/AdminPanel';
 
 const index = () => {
     const [isAdmin, setIsAdmin] = useState(false);

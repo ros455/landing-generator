@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import style from '../styles/admin/Products.module.scss';
-import Loader from '../components/Loader.js';
+import style from '../../styles/admin/Products.module.scss';
+import Loader from './Loader.js';
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
