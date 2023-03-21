@@ -62,8 +62,8 @@ const Products = () => {
                 <input type='text' value={price} onChange={(e) => setPrice(e.target.value)}/>
                 {/* <input type='text' value={availability} onChange={(e) => setAvilability(e.target.value)}/> */}
                     <select value={availability} onChange={(e) => setAvilability(e.target.value)}>
-                        <option value="В наявності">В наявності</option>
-                        <option value="Не має в наявності">Не має в наявності</option>
+                        <option value="в наявності">в наявності</option>
+                        <option value="не в наявності">не в наявності</option>
                     </select>
                 <div className={style.edit_button_block}>
                 <button className={style.product_close_button} onClick={() => setIsOpen(false)}>Закрити</button>

@@ -139,8 +139,6 @@ const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,u
           <div className={style.image_wrap}>
             <Image
               src={`${review?.imageUrl != undefined && review?.imageUrl != 'null' && review?.imageUrl != '' ? review?.imageUrl : '/image/not-img.jpg'}`}
-              // src={`${review?.imageUrl ? review?.imageUrl : '/image/not-img.jpg'}`}
-              // src={`${'/image/not-img.jpg'}`}
               alt={`${review?.imageUrl != undefined && review?.imageUrl != 'null' ? review?.imageUrl : '/image/not-img.jpg'}`}
               width='100'
               height='100'
