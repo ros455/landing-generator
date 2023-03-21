@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/legacy/image';
-import style from '../styles/Reviews.module.scss';
+import style from '../styles/admin/Reviews.module.scss';
 import { useRouter } from 'next/router';
 
 const TemplateDetailReview = ({review,deleteUrl,updateReviewUrl,updateImageUrl,userReview}) => {

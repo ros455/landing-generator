@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import style from '../../../styles/admin_reviews.module.scss';
+import style from '../../../styles/admin/admin_reviews.module.scss';
 import Image from 'next/legacy/image';
 const AddReview = () => {
     const router = useRouter();

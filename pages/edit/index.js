@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import style from '../../styles/LoginForm.module.scss';
+import style from '../../styles/admin/LoginForm.module.scss';
 import { useRouter } from 'next/router';
 
 const Login = () => {

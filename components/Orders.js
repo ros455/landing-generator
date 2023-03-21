@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from '../styles/Order.module.scss';
+import style from '../styles/admin/Order.module.scss';
 import Link from 'next/link';
 import Loader from '../components/Loader.js';
 const Orders = () => {

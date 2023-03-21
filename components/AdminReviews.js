@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from '../styles/Reviews.module.scss'
+import style from '../styles/admin/Reviews.module.scss';
 import { useRouter } from 'next/router';
 import TemalateReviews from './TemalateReviews';
 import Loader from '../components/Loader.js';

@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../styles/Order.module.scss';
+import style from '../../../styles/admin/Order.module.scss';
 import { useRouter } from 'next/router';
 export const getStaticPaths = async () => {
     const res = await fetch(`https://lending-generator-server.herokuapp.com/get-all-order`);

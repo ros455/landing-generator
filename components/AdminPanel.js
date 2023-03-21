@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../styles/AdminPanel.module.scss';
+import style from '../styles/admin/AdminPanel.module.scss';
 import AdminReviews from './AdminReviews';
 import NewReviews from './NewReviews';
 import Orders from './Orders';

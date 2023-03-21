@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from '../styles/Products.module.scss';
+import style from '../styles/admin/Products.module.scss';
 import Loader from '../components/Loader.js';
 const Products = () => {
     const [products, setProducts] = useState([]);
